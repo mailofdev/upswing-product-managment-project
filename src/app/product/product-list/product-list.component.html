@@ -1,0 +1,28 @@
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>In Stock</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products()">
+        <td>{{ product.name }}</td>
+        <!-- <td>{{ product.price | currency }}</td> -->
+        <td>{{ product.category }}</td>
+        <td>
+          <button (click)="toggleStock(product)">
+            {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+          </button>
+        </td>
+        <td>
+          <button>Edit</button>
+          <button (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

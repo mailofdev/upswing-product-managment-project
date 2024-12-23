@@ -1,0 +1,24 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <label>
+      Name:
+      <input formControlName="name" />
+    </label>
+    <label>
+      Price:
+      <input type="number" formControlName="price" />
+    </label>
+    <label>
+      Category:
+      <select formControlName="category">
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Books">Books</option>
+      </select>
+    </label>
+    <label>
+      In Stock:
+      <input type="checkbox" formControlName="inStock" />
+    </label>
+    <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+  </form>
+  
