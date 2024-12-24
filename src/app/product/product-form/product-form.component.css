@@ -1,0 +1,27 @@
+.form-card {
+  position: sticky;
+  top: 88px;
+  
+  mat-card-header {
+    padding: 16px;
+  }
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px 16px;
+}
+
+.stock-checkbox {
+  margin: 8px 0;
+}
+
+.submit-button {
+  margin-top: 8px;
+  
+  mat-icon {
+    margin-right: 8px;
+  }
+}

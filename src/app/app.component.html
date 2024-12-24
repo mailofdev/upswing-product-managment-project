@@ -1,5 +1,17 @@
-<div>
-  <h1>Product Management</h1>
-  <app-product-form></app-product-form>
-  <app-product-list></app-product-list>
+<div class="app-container">
+  <mat-toolbar color="primary" class="header-toolbar">
+    <!-- Left-aligned image -->
+    <div class="header-image">
+      <img src="assets/upswing.png" alt="Logo" />
+    </div>
+    <!-- Right-aligned title -->
+    <h1 class="header-title">Product Management System</h1>
+  </mat-toolbar>
+  
+  <div class="content-container">
+    <div class="grid-layout">
+      <app-product-form></app-product-form>
+      <app-product-list></app-product-list>
+    </div>
+  </div>
 </div>

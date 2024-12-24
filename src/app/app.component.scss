@@ -1,0 +1,60 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.header-image img {
+  height: 40px; /* Adjust the size as needed */
+  width: auto; /* Maintain aspect ratio */
+  display: block; /* Ensure it displays correctly */
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-left: auto; /* Ensures proper alignment with the image */
+}
+
+.content-container {
+  flex: 1;
+  padding: 16px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Adjust based on form and list proportions */
+  gap: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-layout {
+    grid-template-columns: 1fr; /* Stack the form and list vertically on smaller screens */
+  }
+
+  .header-title {
+    font-size: 1.2rem; /* Adjust the title size on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .header-toolbar {
+    padding: 0 8px; /* Reduce padding on very small screens */
+  }
+
+  .header-title {
+    font-size: 1rem; /* Adjust the title size further on very small screens */
+  }
+
+  .header-image img {
+    height: 30px; /* Reduce image size on smaller screens */
+  }
+}

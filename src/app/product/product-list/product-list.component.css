@@ -1,0 +1,56 @@
+.list-card {
+  mat-card-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.filter-section {
+  mat-form-field {
+    width: 200px;
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 0 -16px;
+  padding: 0 16px 16px;
+}
+
+.products-table {
+  width: 100%;
+
+  th {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+    white-space: nowrap;
+  }
+
+  .price-cell {
+    font-weight: 500;
+    color: #1976d2;
+  }
+}
+
+.stock-button {
+  min-width: 120px;
+
+  mat-icon {
+    margin-right: 8px;
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+    line-height: 18px;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+
+  button {
+    transform: scale(0.9);
+  }
+}
