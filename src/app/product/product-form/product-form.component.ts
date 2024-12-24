@@ -1,6 +1,6 @@
+// src/app/product/product-form/product-form.component.ts
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from '../product.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -9,6 +9,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import { ProductStore } from '../store/product.store';
+
 @Component({
   selector: 'app-product-form',
   standalone: true,
@@ -30,7 +32,7 @@ import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/m
   styleUrls: ['./product-form.component.css'],
 })
 export class ProductFormComponent {
-  private productService = inject(ProductService);
+  private productStore = inject(ProductStore);
   private formBuilder = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
 
@@ -45,11 +47,12 @@ export class ProductFormComponent {
 
   onSubmit() {
     if (this.productForm.valid) {
-      this.productService.addProduct(this.productForm.value);
+      this.productStore.addProduct(this.productForm.value);
       this.snackBar.open('Product added successfully', 'Close', {
         duration: 2000,
       });
   
+      // Reset form
       this.productForm.patchValue({
         name: '',
         price: null,
@@ -57,6 +60,7 @@ export class ProductFormComponent {
         inStock: true
       });
   
+      // Reset form state
       Object.keys(this.productForm.controls).forEach(key => {
         const control = this.productForm.get(key);
         control?.markAsUntouched();

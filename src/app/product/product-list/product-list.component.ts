@@ -9,10 +9,11 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ProductService } from '../product.service';
+import { MatChipsModule } from '@angular/material/chips';
 import { Product } from '../product.model';
 import { ProductEditDialogComponent } from '../product-edit-dialog.component';
-import { MatChipsModule } from '@angular/material/chips';
+import { ProductStore } from '../store/product.store';
+
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -33,16 +34,16 @@ import { MatChipsModule } from '@angular/material/chips';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
-  private productService = inject(ProductService);
+  private productStore = inject(ProductStore);
   private snackBar = inject(MatSnackBar);
   private dialog = inject(MatDialog);
 
-  products = this.productService.getFilteredProducts();  
+  products = this.productStore.filteredProducts;
   categories: string[] = ['Electronics', 'Clothing', 'Books'];
   displayedColumns: string[] = ['name', 'price', 'category', 'inStock', 'actions'];
 
   toggleStock(product: Product): void {
-    this.productService.toggleStock(product.id);
+    this.productStore.toggleStock(product.id);
     const status = product.inStock ? 'out of stock' : 'in stock';
     this.snackBar.open(
       `Product ${product.name} marked as ${status}`,
@@ -58,7 +59,7 @@ export class ProductListComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.productService.updateProduct(result);
+        this.productStore.updateProduct(result);
         this.snackBar.open('Product updated successfully', 'Close', {
           duration: 3000
         });
@@ -67,14 +68,14 @@ export class ProductListComponent {
   }
 
   deleteProduct(product: Product): void {
-    this.productService.deleteProduct(product.id);
+    this.productStore.deleteProduct(product.id);
     this.snackBar.open(`Product ${product.name} deleted`, 'Close', {
       duration: 3000,
     });
   }
 
   onCategoryChange(category: string | null): void {
-    this.productService.setSelectedCategory(category);
+    this.productStore.setSelectedCategory(category);
   }
 
   getCategoryColor(category: string): string {

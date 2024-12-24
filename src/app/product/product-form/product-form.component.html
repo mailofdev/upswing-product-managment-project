@@ -41,11 +41,13 @@
           Category is required
         </mat-error>
       </mat-form-field>
-<!-- instock checkbox -->
+
+      <!-- instock checkbox -->
       <mat-checkbox formControlName="inStock" class="stock-checkbox">
         Product is in stock
       </mat-checkbox>
-<!-- Add product button -->
+
+      <!-- Add product button -->
       <button mat-raised-button color="primary" type="submit" 
               [disabled]="productForm.invalid" class="submit-button">
         <mat-icon>add</mat-icon>
