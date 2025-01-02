@@ -42,6 +42,7 @@ export class ProductFormComponent {
     name: ['', [Validators.required, Validators.minLength(3)]],
     price: [null, [Validators.required, Validators.min(0.01)]],
     category: ['', Validators.required],
+    description:['', Validators.required],
     inStock: [true],
   });
 
@@ -57,6 +58,7 @@ export class ProductFormComponent {
         name: '',
         price: null,
         category: '',
+        description: '',
         inStock: true
       });
   

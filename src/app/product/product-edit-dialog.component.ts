@@ -45,6 +45,12 @@ import { Product } from './product.model';
           </mat-select>
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+  <mat-label>Description</mat-label>
+  <textarea matInput formControlName="description" rows="3"></textarea>
+</mat-form-field>
+
+
         <mat-checkbox formControlName="inStock">In Stock</mat-checkbox>
       </form>
     </mat-dialog-content>
@@ -81,6 +87,7 @@ export class ProductEditDialogComponent {
       name: [this.data.name, [Validators.required, Validators.minLength(3)]],
       price: [this.data.price, [Validators.required, Validators.min(0.01)]],
       category: [this.data.category, Validators.required],
+      description:[this.data.description, Validators.required],
       inStock: [this.data.inStock],
     });
   }

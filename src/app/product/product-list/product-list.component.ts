@@ -40,7 +40,7 @@ export class ProductListComponent {
 
   products = this.productStore.filteredProducts;
   categories: string[] = ['Electronics', 'Clothing', 'Books'];
-  displayedColumns: string[] = ['name', 'price', 'category', 'inStock', 'actions'];
+  displayedColumns: string[] = ['name', 'price', 'category', 'description', 'inStock', 'actions'];
 
   toggleStock(product: Product): void {
     this.productStore.toggleStock(product.id);

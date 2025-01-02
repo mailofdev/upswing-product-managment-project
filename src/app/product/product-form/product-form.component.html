@@ -42,6 +42,18 @@
         </mat-error>
       </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Product description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Enter product description"  rows="3"></textarea>
+        <mat-error *ngIf="productForm.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
+        <mat-error *ngIf="productForm.get('description')?.hasError('minlength')">
+          Description must be at least 3 words
+        </mat-error>
+      </mat-form-field>
+
+      
       <!-- instock checkbox -->
       <mat-checkbox formControlName="inStock" class="stock-checkbox">
         Product is in stock
